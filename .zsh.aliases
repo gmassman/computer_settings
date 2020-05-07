@@ -1,0 +1,22 @@
+alias ls='ls -lG'
+alias python='python3'
+alias rand="openssl rand -base64 $1"
+
+alias gst="git status"
+alias gc="git checkout"
+alias gcm="git checkout master"
+alias gsh="git show"
+alias gcnpm="git checkout master && git pull"
+alias ganc="git add -A && git commit --verbose"
+alias gd="git diff"
+alias gdh="git diff HEAD"
+alias gdm="git diff master"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gb="git branch"
+alias gcb="git checkout -b"
+alias gfo="git fetch origin"
+alias gr="git rebase"
+alias gri="git rebase -i"
+alias grm="git rebase master"
+alias ganrc="git add -A && git rebase --continue"
+
