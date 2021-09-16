@@ -7,6 +7,7 @@ export EDITOR=vim
 
 source $HOME/.zsh.prompt
 source $HOME/.zsh.aliases
+source $HOME/.zsh.funcs
 
 # Load Git autocomplete
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash

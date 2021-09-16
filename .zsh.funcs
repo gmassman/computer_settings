@@ -1,0 +1,20 @@
+up() {
+    local count="${1:-1}"
+    local path=../
+    while (( --count > 0 )) ; do
+        path="$path"../
+    done
+    echo "cd -- $path"
+    cd -- "$path"
+}
+
+randa() {
+    python -c "
+from random import choices
+print(''.join(choices('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', k=int($1))))"
+}
+
+gpoc() {
+    git push origin $(git branch --show-current) $1
+}
+
