@@ -11,13 +11,17 @@ return {
   },
   lazy = false,
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '\\', ':Neotree reveal focus<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<leader>b', ':Neotree source=buffers reveal=true action=focus<CR>', desc = 'NeoTree buffers', silent = true },
   },
   opts = {
     filesystem = {
       window = {
         mappings = {
           ['\\'] = 'close_window',
+        },
+        follow_current_file = {
+          enabled = true,
         },
       },
     },
