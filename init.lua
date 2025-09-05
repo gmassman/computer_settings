@@ -147,6 +147,19 @@ vim.keymap.set({ 'n', 'v' }, '<C-y>', '"+y', { desc = 'Copy to system clipboard'
 
 vim.keymap.set('n', '<leader>pd', 'Ofrom pprint import pprint as pp; import ipdb; ipdb.set_trace()<esc>:w<CR>', { desc = '[D]ebug breakpoint with ipdb' })
 
+-- buffer navigation
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = '[N]ext [B]uffer' })
+vim.keymap.set('n', '<leader>bl', ':blast<CR>', { desc = '[L]ast [B]uffer' })
+vim.keymap.set('n', '<leader>bd', function()
+  if vim.fn.bufnr '#' > 0 then
+    local current_buf = vim.api.nvim_get_current_buf()
+    vim.cmd 'buffer #'
+    vim.api.nvim_buf_delete(current_buf, { force = false })
+  else
+    print 'No previous buffer to switch to'
+  end
+end, { desc = '[D]elete [B]uffer' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -298,6 +311,7 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>p', group = '[P]ython' },
+        { '<leader>b', group = '[B]uffers' },
       },
     },
   },
@@ -405,6 +419,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = '[ ] Find Files' })
+      vim.keymap.set('n', '<leader>bo', builtin.buffers, { desc = '[O]pen [B]uffers' })
 
       vim.keymap.set('n', '<leader>sw', function()
         require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()
@@ -920,7 +935,7 @@ require('lazy').setup({
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   { -- Collection of various small independent plugins/modules
-    'echasnovski/mini.nvim',
+    'nvim-mini/mini.nvim',
     config = function()
       -- Better Around/Inside textobjects
       --
@@ -936,6 +951,9 @@ require('lazy').setup({
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
+
+      -- Minimal and fast autopairs
+      require('mini.pairs').setup()
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -1038,7 +1056,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
@@ -1071,7 +1089,7 @@ if vim.g.neovide then
 end
 
 require('conform').formatters.jq = {
-  append_args = { '--indent', '4' },
+  append_args = { '--indent', '2' },
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`

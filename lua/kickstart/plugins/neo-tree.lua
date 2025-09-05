@@ -12,7 +12,7 @@ return {
   lazy = false,
   keys = {
     { '\\', ':Neotree reveal focus<CR>', desc = 'NeoTree reveal', silent = true },
-    { '<leader>b', ':Neotree source=buffers reveal=true action=focus<CR>', desc = 'NeoTree buffers', silent = true },
+    { '<leader>ba', ':Neotree source=buffers reveal=true action=focus<CR>', desc = '[A]ll [B]uffers', silent = true },
   },
   opts = {
     filesystem = {
