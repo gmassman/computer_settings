@@ -5,6 +5,7 @@ end
 require 'custom.settings'
 require 'custom.keymaps'
 require 'custom.autocmds'
+require 'custom.quickfix'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -136,6 +137,7 @@ require('lazy').setup({
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>p', group = '[P]ython' },
         { '<leader>b', group = '[B]uffers' },
+        { '<leader>q', group = '[Q]uickfix' },
       },
     },
   },
@@ -496,7 +498,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        pyright = {},
+        -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --

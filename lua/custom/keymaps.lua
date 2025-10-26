@@ -5,8 +5,12 @@
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+-- quickfix
+vim.keymap.set('n', '<leader>qq', vim.diagnostic.setloclist, { desc = 'Open diagnostics in [Q]uickfix' })
+vim.keymap.set('n', '<leader>qr', ':resize 10<cr>', { desc = '[R]esize [Q]uickfix' })
+vim.keymap.set('n', '<leader>qs', ':QfSave<cr>', { desc = '[S]ave [Q]uickfix' })
+vim.keymap.set('n', '<leader>ql', ':QfLoad<cr>', { desc = '[L]oad [Q]uickfix' })
+vim.keymap.set('n', '<leader>qd', ':QfDelete<cr>', { desc = '[D]elete [Q]uickfix item' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
