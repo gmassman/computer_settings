@@ -2,6 +2,8 @@ if vim.g.neovide then
   require 'custom.neovide'
 end
 
+-- test change in nvim
+
 require 'custom.settings'
 require 'custom.keymaps'
 require 'custom.autocmds'
